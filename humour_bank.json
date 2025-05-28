@@ -1,0 +1,20 @@
+{
+    "soft": [
+        "Pourquoi les chaussettes n’aiment pas Internet ? Trop de cookies.",
+        "Si tu souris en lisant ça, mission accomplie.",
+        "Tu sais ce qui est mieux qu’un bon antivirus ? Un bon fou rire.",
+        "L’humour, c’est comme un parapluie : ça protège quand il pleut de soucis."
+    ],
+    "nerdy": [
+        "Pourquoi les développeurs aiment les cafés ? Pour déboguer leur matinée.",
+        "Tu veux une blague IA ? Attends… je te l’ai déjà prédite.",
+        "Je ne bugge pas. Je réfléchis intensément… avec un style.",
+        "Rien de plus logique qu’un `if (life==hard): laugh()`"
+    ],
+    "grandma_friendly": [
+        "Pourquoi les télécommandes disparaissent toujours ? Parce qu’elles se couchent dans le divan.",
+        "T’inquiète pas, même les ordinateurs se reposent parfois. C’est ce qu’on appelle... mise en veille !",
+        "Rien de mieux qu’un bon thé et un rire doux. Le reste peut attendre.",
+        "Les robots font pas de soupe… mais moi, j’ai du cœur pour deux."
+    ]
+}

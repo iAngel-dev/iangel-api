@@ -1,12 +1,17 @@
-# iAngel Global GitHub Pack
+# iAngel API
 
-## Structure
-- `/frontend/profile.tsx` — Interface utilisateur complète
-- `/backend/iangel_memory_api.py` — API Flask de gestion de la mémoire iAngel
+Moteur d'API backend de l'application iAngel.  
+Propulsée par Flask, pensée pour l'assistance humaine, l'apprentissage local, et la bienveillance numérique.
 
-## Déploiement
-1. Déposez le contenu du dossier `/frontend` dans un projet React
-2. Déployez `/backend/iangel_memory_api.py` sur Render ou autre
+## Endpoints disponibles
+- `/` : Bienvenue
+- `/teach` : Obtenir des conseils contextuels
+- `/scan-phone` : Évaluer un numéro suspect
+- `/analyze-anxiety` : Évaluer un risque vocal
+- `/voice` : Voix par défaut active
 
-## Auteur
-Créé par Félix Lefebvre & SciSpace Architect
+## Déploiement Render
+1. Connecte ce repo à Render
+2. Utilise les commandes :
+   - Build: `pip install -r requirements.txt`
+   - Start: `python iangel_backend_full.py`

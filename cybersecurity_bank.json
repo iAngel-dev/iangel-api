@@ -1,0 +1,22 @@
+{
+    "passwords": [
+        "Utilise des mots de passe uniques pour chaque compte.",
+        "Ne partage jamais ton mot de passe, même avec des proches.",
+        "Un bon mot de passe contient des lettres, des chiffres et des symboles."
+    ],
+    "phishing": [
+        "Ne clique jamais sur des liens douteux dans des courriels inattendus.",
+        "Si un message semble pressant ou alarmant, prends une pause avant de réagir.",
+        "Vérifie l’adresse d’expéditeur : elle peut sembler légitime… mais ne pas l’être."
+    ],
+    "updates": [
+        "Garde ton appareil à jour avec les dernières mises à jour de sécurité.",
+        "Les mises à jour corrigent souvent des failles qui pourraient te mettre en danger.",
+        "Active les mises à jour automatiques si possible."
+    ],
+    "devices": [
+        "Protège ton appareil avec un mot de passe ou une empreinte digitale.",
+        "Verrouille ton écran quand tu t’absentes.",
+        "Évite d’utiliser des réseaux Wi-Fi publics sans protection."
+    ]
+}

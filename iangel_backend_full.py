@@ -1,92 +1,63 @@
 from flask import Flask, request, jsonify
 import os
 import json
+import pickle
+
+from dotenv import load_dotenv
+load_dotenv()
 
 app = Flask(__name__)
-PROFILE_DIR = "user_profiles"
+app.config['SECRET_KEY'] = os.getenv("API_SECRET_KEY")
 
-def get_profile_path(token):
-    return os.path.join(PROFILE_DIR, f"{token}.json")
+# Load models
+with open(os.getenv("PHONE_SCAN_MODEL"), "rb") as f:
+    phone_model = pickle.load(f)
 
-@app.route("/user/<token>/memory", methods=["GET"])
-def get_memory(token):
-    filepath = get_profile_path(token)
-    if not os.path.exists(filepath):
-        return jsonify({"error": "User profile not found"}), 404
-    with open(filepath, "r", encoding="utf-8") as f:
-        profile = json.load(f)
-        memory = profile.get("memory", [])
-    return jsonify({"memory": memory}), 200
+with open(os.getenv("ANXIETY_MODEL"), "rb") as f:
+    anxiety_model = pickle.load(f)
 
-@app.route("/user/<token>/memory", methods=["POST"])
-def save_memory(token):
+with open(os.getenv("FEATURE_SCALER"), "rb") as f:
+    anxiety_scaler = pickle.load(f)
+
+with open(os.getenv("USER_MODEL"), "rb") as f:
+    user_model = pickle.load(f)
+
+@app.route("/")
+def home():
+    return jsonify({"message": "Bienvenue sur l'API iAngel 🕊️"}), 200
+
+@app.route("/scan-phone", methods=["POST"])
+def scan_phone():
     data = request.get_json()
-    entry = data.get("entry", "").strip()
-    if not entry:
-        return jsonify({"error": "No memory entry provided"}), 400
-    filepath = get_profile_path(token)
-    if not os.path.exists(filepath):
-        return jsonify({"error": "User profile not found"}), 404
-    with open(filepath, "r+", encoding="utf-8") as f:
-        profile = json.load(f)
-        profile.setdefault("memory", []).append(entry)
-        f.seek(0)
-        f.truncate()
-        json.dump(profile, f, indent=4)
-    return jsonify({"message": "Memory saved", "entry": entry}), 200
+    features = data.get("features", [])
+    if not features:
+        return jsonify({"error": "Aucune donnée transmise."}), 400
+    prediction = phone_model.predict([features])
+    return jsonify({"risque": int(prediction[0])})
 
-@app.route("/user/<token>/memory/<int:index>", methods=["DELETE"])
-def delete_memory_entry(token, index):
-    filepath = get_profile_path(token)
-    if not os.path.exists(filepath):
-        return jsonify({"error": "User profile not found"}), 404
-    with open(filepath, "r+", encoding="utf-8") as f:
-        profile = json.load(f)
-        memory = profile.get("memory", [])
-        if 0 <= index < len(memory):
-            removed = memory.pop(index)
-            profile["memory"] = memory
-            f.seek(0)
-            f.truncate()
-            json.dump(profile, f, indent=4)
-            return jsonify({"message": "Memory deleted", "removed": removed}), 200
-        else:
-            return jsonify({"error": "Invalid memory index"}), 400
-
-@app.route("/user/<token>/memory", methods=["DELETE"])
-def clear_memory(token):
-    filepath = get_profile_path(token)
-    if not os.path.exists(filepath):
-        return jsonify({"error": "User profile not found"}), 404
-    with open(filepath, "r+", encoding="utf-8") as f:
-        profile = json.load(f)
-        profile["memory"] = []
-        f.seek(0)
-        f.truncate()
-        json.dump(profile, f, indent=4)
-    return jsonify({"message": "All memory cleared"}), 200
-
-@app.route("/user/<token>/memory/<int:index>", methods=["PUT"])
-def update_memory_entry(token, index):
+@app.route("/analyze-anxiety", methods=["POST"])
+def analyze_anxiety():
     data = request.get_json()
-    new_entry = data.get("entry", "").strip()
-    if not new_entry:
-        return jsonify({"error": "No new entry provided"}), 400
-    filepath = get_profile_path(token)
-    if not os.path.exists(filepath):
-        return jsonify({"error": "User profile not found"}), 404
-    with open(filepath, "r+", encoding="utf-8") as f:
-        profile = json.load(f)
-        memory = profile.get("memory", [])
-        if 0 <= index < len(memory):
-            memory[index] = new_entry
-            profile["memory"] = memory
-            f.seek(0)
-            f.truncate()
-            json.dump(profile, f, indent=4)
-            return jsonify({"message": "Memory updated", "entry": new_entry}), 200
-        else:
-            return jsonify({"error": "Invalid memory index"}), 400
+    features = data.get("features", [])
+    if not features:
+        return jsonify({"error": "Pas de données vocales fournies."}), 400
+    scaled = anxiety_scaler.transform([features])
+    result = anxiety_model.predict(scaled)
+    return jsonify({"anxiété_probable": bool(result[0])})
+
+@app.route("/voice", methods=["GET"])
+def get_voice():
+    return jsonify({"default_voice": os.getenv("DEFAULT_VOICE")})
+
+@app.route("/teach", methods=["POST"])
+def teach_context():
+    topic = request.json.get("topic", "")
+    try:
+        with open("insf_knowledge_base.json", "r", encoding="utf-8") as f:
+            base = json.load(f)
+        return jsonify({"infos": base.get(topic.lower(), [])})
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(host=os.getenv("HOST", "0.0.0.0"), port=int(os.getenv("PORT", 5000)))

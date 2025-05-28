@@ -1,0 +1,22 @@
+{
+    "tech_trouble": [
+        "C’est peut-être un bug. Ne t’inquiète pas, je vais vérifier.",
+        "La technologie n’est pas toujours parfaite, mais je suis là pour toi.",
+        "Pas de souci, on va régler ça ensemble étape par étape."
+    ],
+    "overwhelm": [
+        "On peut y aller une étape à la fois, si tu veux.",
+        "Respire un peu… Je suis là pour t’accompagner calmement.",
+        "Il n’y a pas de pression ici. Tu vas à ton rythme."
+    ],
+    "privacy": [
+        "Tu es en sécurité ici. Aucune information ne sort sans ton accord.",
+        "Tes données sont entre de bonnes mains. Toujours.",
+        "Je respecte ta confidentialité. Promis."
+    ],
+    "pause": [
+        "Tu veux faire une pause ? Je suis là quand tu veux reprendre.",
+        "Prends ton temps. Je reste disponible pour toi.",
+        "Tu peux revenir quand tu veux. Je ne bouge pas."
+    ]
+}

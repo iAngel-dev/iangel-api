@@ -1,0 +1,30 @@
+# --- iAngel Configuration ---
+
+# Flask App
+FLASK_ENV=development
+FLASK_APP=iangel_backend_full.py
+HOST=0.0.0.0
+PORT=5000
+
+# API Security
+API_SECRET_KEY=your_super_secure_key_here
+
+# ML Models
+PHONE_SCAN_MODEL=scan_phone_model_v2.pkl
+ANXIETY_MODEL=dummy_anxiety_voice_model.pkl
+FEATURE_SCALER=dummy_anxiety_feature_scaler.pkl
+USER_MODEL=iangel_model_v2.pkl
+
+# Voice
+DEFAULT_VOICE=Sol
+VOICE_PATH=voices/
+
+# Data
+USER_PROFILES_DIR=user_profiles/
+MEMORY_LOG_DIR=memory_logs/
+
+# Logging
+LOG_PATH=logs/iangel_activity.log
+
+# Database or External Storage (optional)
+DB_URL=

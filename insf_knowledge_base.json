@@ -1,0 +1,60 @@
+{
+    "sensible": [
+        "médical",
+        "dossier médical",
+        "diagnostic",
+        "assurance",
+        "numéro d'assurance sociale",
+        "mot de passe",
+        "banque",
+        "carte de crédit",
+        "résultat de test",
+        "santé mentale"
+    ],
+    "positif": [
+        "joie",
+        "fierté",
+        "progrès",
+        "bravo",
+        "réussi",
+        "bon travail",
+        "merci",
+        "heureux",
+        "en paix"
+    ],
+    "risque": [
+        "bug",
+        "erreur",
+        "je comprends pas",
+        "c’est lent",
+        "problème",
+        "confus",
+        "ça marche pas",
+        "ça me fait peur",
+        "je suis perdu",
+        "je veux arrêter"
+    ],
+    "demarche": [
+        "formulaire",
+        "démarche gouvernementale",
+        "RENSEIGNEMENT",
+        "aide sociale",
+        "demande en ligne",
+        "retraite",
+        "RAMQ",
+        "SAAQ",
+        "impôt",
+        "demande de pension"
+    ],
+    "social": [
+        "appel",
+        "famille",
+        "petit-fils",
+        "voisin",
+        "ami",
+        "souper",
+        "visite",
+        "solitude",
+        "vivre seul"
+    ]
+}
