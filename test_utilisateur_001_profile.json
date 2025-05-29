@@ -1,0 +1,50 @@
+{
+    "user_id": "test_utilisateur_001",
+    "trust_score": 64,
+    "speech_speed_avg": 155.0,
+    "preferred_voice": "Sol",
+    "feedback_history": [
+        {
+            "timestamp": "2025-05-28T22:27:03.407489",
+            "voice_id": "A",
+            "feedback": "positif",
+            "emotion": "joyeux",
+            "speech_speed_sample": 160.0
+        },
+        {
+            "timestamp": "2025-05-28T22:27:03.409501",
+            "voice_id": "A",
+            "feedback": "confus",
+            "emotion": "triste",
+            "speech_speed_sample": 150.0
+        },
+        {
+            "timestamp": "2025-05-28T22:32:40.980816",
+            "voice_id": "A",
+            "feedback": "positif",
+            "emotion": "joyeux",
+            "speech_speed_sample": 160.0
+        },
+        {
+            "timestamp": "2025-05-28T22:32:40.983817",
+            "voice_id": "A",
+            "feedback": "confus",
+            "emotion": "triste",
+            "speech_speed_sample": 150.0
+        }
+    ],
+    "last_emotion": "triste",
+    "comprehension_scores": [
+        {
+            "timestamp": "2025-05-28T22:27:03.411487",
+            "score": 0.6666666666666666
+        },
+        {
+            "timestamp": "2025-05-28T22:32:40.986814",
+            "score": 0.6666666666666666
+        }
+    ],
+    "dropout_risk_score": 0.6000000000000001,
+    "creation_date": "2025-05-28T22:27:03.404488",
+    "last_update_date": "2025-05-28T22:32:40.989812"
+}
