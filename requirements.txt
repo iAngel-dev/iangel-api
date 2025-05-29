@@ -1,3 +1,2 @@
 flask
-python-dotenv
-scikit-learn
+gtts
